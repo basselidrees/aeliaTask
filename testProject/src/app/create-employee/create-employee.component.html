@@ -1,0 +1,42 @@
+<form #employeeForm="ngForm"   (ngSubmit)="onSave(employeeForm.value)" novalidate action="/">  
+    
+ <table border='1' class="table">
+<thead class="thead-dark">
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+</thead>  
+<tr>  
+<td>name</td>  
+<td>   
+    <input name="id" type="hidden"     [(ngModel)]="id" />  
+     <input name="name" type="text"  required  [(ngModel)]="name" />  
+  
+ </td>  
+</tr>  
+  
+<tr>  
+    <td>Date of birth</td>  
+    <td>    <input name="DOB" required  type="date"   [(ngModel)]="DOB" /></td>  
+    </tr> 
+    <tr>  
+      <td>Department</td>  
+      <td>    
+        <select name="department" required    [(ngModel)]="department" >
+          <option value="public department">public department</option>
+          <option value="sales department">sales department</option>
+        </select>
+      </td>  
+      </tr> 
+      <tr>  
+        <td>Years Of Experience</td>  
+        <td>    <input name="YearsOfExperience" required  type="number"   [(ngModel)]="YearsOfExperience" /></td>  
+        </tr>  
+    <tr>  
+        <td colspan="2">  
+    <input type="submit" class="btn btn-success"  value="{{valbutton}}"  />  
+    </td>  
+    </tr>  
+ </table>  
+</form> 

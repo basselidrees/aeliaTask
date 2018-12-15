@@ -18,12 +18,12 @@ export class AppComponent {
    
    
 ngOnInit() {    
-  this.newService.GetUser().subscribe(data =>  this.Repdata = data)  
+  this.newService.GetEmployee().subscribe(data =>  this.Repdata = data)  
 }  
   
-onSave = function(user,isValid: boolean) {    
- user.mode= this.valbutton;  
-  this.newService.saveUser(user)  
+onSave = function(employee,isValid: boolean) {    
+ employee.mode= this.valbutton;  
+  this.newService.saveEmployee(employee)  
   .subscribe(data =>  {  alert(data.data);
     this.ngOnInit();    
   }   
@@ -33,12 +33,14 @@ onSave = function(user,isValid: boolean) {
 edit = function(kk) {  
 this.id = kk._id;  
 this.name= kk.name;  
-this.address= kk.address;  
+this.DOB= kk.DOB;
+this.department= kk.department;
+this.YearsOfExperience= kk.YearsOfExperience  
 this.valbutton ="Update";  
 }  
   
 delete = function(id) {  
-this.newService.deleteUser(id)  
+this.newService.deleteEmployee(id)  
 .subscribe(data =>   { alert(data.data) ; this.ngOnInit();}, error => this.errorMessage = error )   
 }  
   

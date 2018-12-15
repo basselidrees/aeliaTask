@@ -12,17 +12,17 @@ export class CommonService {
   
   constructor(private http: Http) { }  
   
-  saveUser(user){      
-    return this.http.post('http://localhost:8080/api/SaveUser/', user)  
+  saveEmployee(employee){      
+    return this.http.post('http://localhost:8080/api/SaveEmployee/', employee)  
             .pipe(map((response: Response) =>response.json()))              
   }  
   
-  GetUser(){       
-    return this.http.get('http://localhost:8080/api/getUser/')  
+  GetEmployee(){       
+    return this.http.get('http://localhost:8080/api/getEmployee/')  
             .pipe(map((response: Response) => response.json()))              
   }  
- deleteUser(id){   
-    return this.http.post('http://localhost:8080/api/deleteUser/',{'id': id})  
+ deleteEmployee(id){   
+    return this.http.post('http://localhost:8080/api/deleteEmployee/',{'id': id})  
             .pipe(map((response: Response) =>response.json()))               
   }  
   

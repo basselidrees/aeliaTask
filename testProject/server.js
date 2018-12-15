@@ -25,15 +25,17 @@ app.use(function (req, res, next) {
   
  var Schema = mongo.Schema;  
   
-var UsersSchema = new Schema({      
+var EmployeesSchema = new Schema({      
  name: { type: String   },       
- address: { type: String   },   
+ DOB: { type: Date   },
+ department: { type: String   },
+ YearsOfExperience: { type: Number   },
 },{ versionKey: false });  
    
   
-var model = mongo.model('users', UsersSchema, 'users');  
+var model = mongo.model('employees',EmployeesSchema , 'employees');  
   
-app.post("/api/SaveUser",function(req,res){   
+app.post("/api/SaveEmployee",function(req,res){   
  var mod = new model(req.body);  
  if(req.body.mode =="Save")  
  {  
@@ -48,7 +50,7 @@ app.post("/api/SaveUser",function(req,res){
 }  
 else   
 {  
- model.findByIdAndUpdate(req.body.id, { name: req.body.name, address: req.body.address},  
+ model.findByIdAndUpdate(req.body.id, { name: req.body.name, DOB: req.body.DOP,department: req.body.department,YearsOfExperience:req.body.YearsOfExperience},  
    function(err,data) {  
    if (err) {  
    res.send(err);         
@@ -62,7 +64,7 @@ else
 }  
  })  
   
- app.post("/api/deleteUser",function(req,res){      
+ app.post("/api/deleteEmployee",function(req,res){      
     model.remove({ _id: req.body.id }, function(err) {    
      if(err){    
          res.send(err);    
@@ -75,12 +77,12 @@ else
   
   
   
- app.get("/api/getUser",function(req,res){  
+ app.get("/api/getEmployee",function(req,res){  
     model.find({},function(err,data){  
               if(err){  
                   res.send(err);  
               }  
-              else{                
+              else{              
                   res.send(data);  
                   }  
           });  
